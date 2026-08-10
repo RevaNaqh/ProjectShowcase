@@ -75,7 +75,25 @@ a{color:inherit}
   to{transform:translateX(-50%) scale(1.04)}
 }
 .hero-copy{position:relative;z-index:5}
-.overline{margin:0 0 18px;font-size:21px;font-weight:710;letter-spacing:-.02em}
+.overline{
+  margin:0 0 18px;
+  font-family:"Avenir Next","Trebuchet MS","Helvetica Neue",Arial,sans-serif;
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.overline a{
+  color:#2c2c2f;
+  text-decoration:none;
+  display:inline-block;
+  transition:opacity .2s ease, transform .2s ease, letter-spacing .2s ease;
+}
+.overline a:hover{
+  opacity:.62;
+  transform:translateY(-1px);
+  letter-spacing:.095em;
+}
 .hero h1{
   margin:0 auto;max-width:1030px;
   font-size:clamp(62px,9vw,118px);line-height:.9;letter-spacing:-.075em;font-weight:740
@@ -598,7 +616,9 @@ textarea{min-height:110px;resize:vertical}
 
 <section class="hero">
   <div class="shell hero-copy reveal in">
-    <p class="overline">360 Mining Projects</p>
+    <p class="overline">
+      <a href="https://www.linkedin.com/in/revaldi-revikansyah-13350212a/" target="_blank" rel="noopener noreferrer" aria-label="Open Revaldi Revikansyah LinkedIn profile">360 Mining Projects</a>
+    </p>
     <h1>Understand the mine.<br><span class="gradient-text">Build the system.</span></h1>
     <p class="hero-sub">
       An independent portfolio exploring underground planning, scheduling, production systems,
@@ -741,7 +761,7 @@ textarea{min-height:110px;resize:vertical}
 
 <section class="chapter" id="approach">
   <div class="shell">
-    <div class="chapter-head center reveal in">
+    <div class="chapter-head center reveal">
       <div class="chapter-kicker">The approach</div>
       <h2>Learn by building the decisions.</h2>
       <p style="margin-inline:auto">
@@ -750,17 +770,17 @@ textarea{min-height:110px;resize:vertical}
       </p>
     </div>
     <div class="focus-strip">
-      <div class="focus reveal in"><strong>Plan</strong><p>Sequence work, define readiness, protect targets and understand schedule dependencies.</p><span class="num">01</span></div>
-      <div class="focus reveal in"><strong>Operate</strong><p>Model equipment cycles, field delays, bottlenecks and execution response.</p><span class="num">02</span></div>
-      <div class="focus reveal in"><strong>Measure</strong><p>Interpret KPIs, plan-versus-actual behavior, forecast shifts and constraint migration.</p><span class="num">03</span></div>
-      <div class="focus reveal in"><strong>Improve</strong><p>Test alternative decisions with optimization, automation and AI-assisted reasoning.</p><span class="num">04</span></div>
+      <div class="focus reveal"><strong>Plan</strong><p>Sequence work, define readiness, protect targets and understand schedule dependencies.</p><span class="num">01</span></div>
+      <div class="focus reveal"><strong>Operate</strong><p>Model equipment cycles, field delays, bottlenecks and execution response.</p><span class="num">02</span></div>
+      <div class="focus reveal"><strong>Measure</strong><p>Interpret KPIs, plan-versus-actual behavior, forecast shifts and constraint migration.</p><span class="num">03</span></div>
+      <div class="focus reveal"><strong>Improve</strong><p>Test alternative decisions with optimization, automation and AI-assisted reasoning.</p><span class="num">04</span></div>
     </div>
   </div>
 </section>
 
 <section class="chapter dark">
   <div class="shell">
-    <div class="chapter-head center reveal in">
+    <div class="chapter-head center reveal">
       <div class="chapter-kicker">One operating system of thought</div>
       <h2>Planning is connected.</h2>
       <p style="margin-inline:auto">
@@ -768,13 +788,13 @@ textarea{min-height:110px;resize:vertical}
         Material movement changes feed. Feed changes value.
       </p>
     </div>
-    <div class="quote reveal in">The goal is to see <span>what changes next</span> when one part of the mine changes now.</div>
+    <div class="quote reveal">The goal is to see <span>what changes next</span> when one part of the mine changes now.</div>
   </div>
 </section>
 
 <footer class="footer">
   <div class="shell footer-row">
-    <span>360 Mining Projects - Prepared by Revaldi Suma Revikansyah</span>
+    <span>360 Mining Projects by Revaldi Suma Revikansyah</span>
     <span>Independent mine planning &amp; operations portfolio</span>
   </div>
 </footer>
