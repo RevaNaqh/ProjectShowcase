@@ -1172,8 +1172,99 @@ button,input,textarea{font:inherit}
   .scroll-scene-media{transform:none!important;transition:none!important}
 }
 </style>
+
+<style id="portfolio-language-switch-style">
+/* =========================================================
+   Seamless EN / ID language switch
+   ========================================================= */
+.language-switcher{
+  --lang-bg:rgba(255,255,255,.70);
+  --lang-border:rgba(0,0,0,.09);
+  --lang-text:#6e6e73;
+  --lang-active-bg:#1d1d1f;
+  --lang-active-text:#fff;
+  --lang-shadow:0 12px 36px rgba(0,0,0,.10);
+  position:fixed;
+  z-index:900;
+  top:18px;
+  right:18px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3px;
+  width:104px;
+  padding:4px;
+  border:1px solid var(--lang-border);
+  border-radius:999px;
+  background:var(--lang-bg);
+  box-shadow:var(--lang-shadow),inset 0 1px 0 rgba(255,255,255,.48);
+  backdrop-filter:blur(18px) saturate(150%);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  transition:background .38s ease,border-color .38s ease,box-shadow .38s ease,transform .22s ease;
+}
+html[data-portfolio="analyst"] .language-switcher{
+  --lang-bg:rgba(17,17,21,.70);
+  --lang-border:rgba(255,255,255,.12);
+  --lang-text:#8d8d97;
+  --lang-active-bg:#f3f3f5;
+  --lang-active-text:#09090b;
+  --lang-shadow:0 16px 42px rgba(0,0,0,.34);
+  box-shadow:var(--lang-shadow),inset 0 1px 0 rgba(255,255,255,.06);
+}
+.language-switcher:hover{transform:translateY(-1px)}
+.language-switcher button{
+  position:relative;
+  z-index:1;
+  min-width:0;
+  height:30px;
+  padding:0;
+  border:0;
+  border-radius:999px;
+  background:transparent;
+  color:var(--lang-text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;
+  font-size:11px;
+  line-height:30px;
+  font-weight:780;
+  letter-spacing:.055em;
+  cursor:pointer;
+  outline:none;
+  transition:color .22s ease,background .22s ease,box-shadow .22s ease,transform .18s ease;
+}
+.language-switcher button:hover:not(.is-active){color:color-mix(in srgb,var(--lang-text) 55%,#111)}
+html[data-portfolio="analyst"] .language-switcher button:hover:not(.is-active){color:#d6d6dc}
+.language-switcher button.is-active{
+  color:var(--lang-active-text);
+  background:var(--lang-active-bg);
+  box-shadow:0 4px 13px rgba(0,0,0,.13);
+}
+html[data-portfolio="analyst"] .language-switcher button.is-active{box-shadow:0 5px 16px rgba(0,0,0,.30)}
+.language-switcher button:active{transform:scale(.96)}
+.language-switcher button:focus-visible{box-shadow:0 0 0 3px rgba(120,103,255,.28)}
+html.is-language-switching .portfolio-page:not([hidden]){
+  opacity:.72;
+  transition:opacity .11s ease;
+}
+.portfolio-page:not([hidden]){
+  transition:opacity .18s ease;
+}
+@media(max-width:620px){
+  .language-switcher{top:12px;right:12px;width:94px;padding:3px}
+  .language-switcher button{height:29px;line-height:29px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .language-switcher,.language-switcher button,.portfolio-page{transition:none!important}
+  html.is-language-switching .portfolio-page:not([hidden]){opacity:1!important}
+}
+</style>
+
 </head>
 <body>
+
+<div class="language-switcher" id="languageSwitcher" role="group" aria-label="Language / Bahasa">
+  <button type="button" data-language="en" class="is-active" aria-pressed="true" title="English">EN</button>
+  <button type="button" data-language="id" aria-pressed="false" title="Bahasa Indonesia">ID</button>
+</div>
+
 <div id="miningPortfolio" class="portfolio-page mining-page" data-portfolio-page="mining" aria-hidden="false">
 
 <section class="hero">
@@ -2087,5 +2178,161 @@ initReveal();
   });
 })();
 </script>
+
+<script id="portfolio-i18n">
+(function(){
+  const ID = {"360 Mining Projects | Revaldi Suma Revikansyah":"360 Mining Projects | Revaldi Suma Revikansyah","System Analyst Projects | Revaldi Suma Revikansyah":"System Analyst Projects | Revaldi Suma Revikansyah","Understand the mine.":"Pahami tambangnya.","Build the system.":"Bangun sistemnya.","An independent portfolio exploring underground planning, scheduling, production systems, mine value, haulage, blending and engineering decision support.":"Portofolio independen yang mengeksplorasi perencanaan tambang bawah tanah, penjadwalan, sistem produksi, nilai tambang, pengangkutan, blending, dan dukungan keputusan teknik.","Explore the projects":"Jelajahi proyek","Explore projects":"Jelajahi proyek","See the approach":"Lihat pendekatan","Planning":"Perencanaan","Mine system map":"Peta sistem tambang","From the surface pit to underground stopes and operational decisions.":"Dari pit permukaan hingga stope bawah tanah dan keputusan operasional.","Scheduling":"Penjadwalan","Connected workflow":"Alur kerja terhubung","Translate design intent into executable sequences and constraints.":"Menerjemahkan maksud desain menjadi urutan kerja dan kendala yang dapat dieksekusi.","Operations":"Operasi","Physical execution":"Eksekusi fisik","See how equipment, access, material flow and readiness interact.":"Lihat bagaimana peralatan, akses, aliran material, dan kesiapan saling berinteraksi.","Analytics":"Analitik","Decision visibility":"Visibilitas keputusan","Use the visual as a clean portfolio centerpiece people can immediately understand.":"Menggunakan visual sebagai pusat portofolio yang bersih dan dapat langsung dipahami.","Integrated mine system graphic • open pit + underground + plant + planning workflow":"Grafik sistem tambang terintegrasi • open pit + bawah tanah + plant + alur perencanaan","On site":"Di lapangan","Every schedule eventually meets a real pit, moving in real time.":"Setiap jadwal pada akhirnya bertemu dengan pit nyata yang terus bergerak.","The 360 portfolio":"Portofolio 360","From development headings to business value.":"Dari heading development hingga nilai bisnis.","Each system is a different lens on the same operation. Together they connect planning, physical execution, constraints, material flow, processing and decision quality.":"Setiap sistem memberikan sudut pandang berbeda terhadap operasi yang sama. Bersama-sama, semuanya menghubungkan perencanaan, eksekusi fisik, kendala, aliran material, pengolahan, dan kualitas keputusan.","Underground Planning":"Perencanaan Bawah Tanah","Build the mine before the shift begins.":"Bangun rencana tambang sebelum shift dimulai.","An underground planning and operations learning system connecting development sequencing, stope readiness, multi-heading execution, equipment cycles and operational constraints.":"Sistem pembelajaran perencanaan dan operasi bawah tanah yang menghubungkan urutan development, kesiapan stope, eksekusi multi-heading, siklus peralatan, dan kendala operasional.","Underground":"Bawah Tanah","SLS":"SLS","Python":"Python","Adapt to real company software":"Beradaptasi dengan perangkat lunak yang digunakan perusahaan","A continues self-learning for underground mine planning. Learning of how to operate deswik.sched software, creating task, assign resource, reporting, task predecessor and schedule bottleneck analysis":"Pembelajaran mandiri berkelanjutan untuk perencanaan tambang bawah tanah: mengoperasikan Deswik.Sched, membuat task, menetapkan resource, membuat laporan, mengelola predecessor, dan menganalisis bottleneck jadwal.","Deswik":"Deswik","Open Pit Planning":"Perencanaan Open Pit","Value is a sequence, not a block.":"Nilai berasal dari urutan, bukan sekadar blok.","An open-pit planning system for block validation, production capacity, routing, stockpiles and multi-period value interpretation. This projects are interconnected to MineOps 360 and being a starting point to learn more deep about Ore Processing and Ore Blending (BlendFeed 360).":"Sistem perencanaan open pit untuk validasi blok, kapasitas produksi, routing, stockpile, dan interpretasi nilai multi-periode. Proyek ini terhubung dengan MineOps 360 dan menjadi titik awal untuk mempelajari pengolahan bijih serta ore blending lebih dalam melalui BlendFeed 360.","Open Pit":"Open Pit","Stockpile":"Stockpile","Value":"Nilai","The plan meets the road.":"Rencana bertemu realitas di jalan angkut.","A shift-based haulage and dispatcher simulation covering truck movement, road effects, delays, reallocations, attainment and bottlenecks.":"Simulasi haulage dan dispatch berbasis shift yang mencakup pergerakan truk, pengaruh kondisi jalan, keterlambatan, realokasi, pencapaian target, dan bottleneck.","Haulage":"Haulage","Dispatch":"Dispatch","Simulation":"Simulasi","KPI":"KPI","Processing Interface":"Antarmuka Pengolahan","Mining decisions continue into the plant.":"Keputusan tambang berlanjut hingga ke plant.","An ore blending and feed decision simulator connecting stockpile availability, chemistry constraints, route selection and processing risk.":"Simulator keputusan ore blending dan feed yang menghubungkan ketersediaan stockpile, kendala kimia, pemilihan jalur, dan risiko pengolahan.","Blending":"Blending","HPAL":"HPAL","RKEF":"RKEF","↕ Scroll preview":"↕ Pratinjau gulir","In motion":"Dalam pergerakan","The plan only means something once it hits the ground.":"Rencana baru berarti ketika benar-benar dijalankan di lapangan.","The approach":"Pendekatan","Learn by building the decisions.":"Belajar dengan membangun cara mengambil keputusan.","Not just dashboards. The projects are built to expose the assumptions, dependencies, constraints and trade-offs behind a mining decision.":"Bukan sekadar dashboard. Proyek-proyek ini dibangun untuk memperlihatkan asumsi, dependensi, kendala, dan trade-off di balik sebuah keputusan pertambangan.","Plan":"Rencanakan","Sequence work, define readiness, protect targets and understand schedule dependencies.":"Susun urutan kerja, definisikan kesiapan, lindungi target, dan pahami dependensi jadwal.","Operate":"Operasikan","Model equipment cycles, field delays, bottlenecks and execution response.":"Modelkan siklus peralatan, keterlambatan lapangan, bottleneck, dan respons eksekusi.","Measure":"Ukur","Interpret KPIs, plan-versus-actual behavior, forecast shifts and constraint migration.":"Interpretasikan KPI, perilaku plan-versus-actual, perubahan forecast, dan perpindahan kendala.","Improve":"Tingkatkan","Test alternative decisions with optimization, automation and AI-assisted reasoning.":"Uji keputusan alternatif melalui optimasi, otomasi, dan reasoning berbantuan AI.","Ground truth":"Realitas lapangan","Cycles, delays, dust — the variables a good system has to hold.":"Siklus, keterlambatan, debu — variabel yang harus mampu ditangani oleh sistem yang baik.","One operating system of thought":"Satu sistem berpikir operasional","Planning is connected.":"Perencanaan saling terhubung.","Development changes readiness. Readiness changes production. Production changes material movement. Material movement changes feed. Feed changes value.":"Development mengubah kesiapan. Kesiapan mengubah produksi. Produksi mengubah pergerakan material. Pergerakan material mengubah feed. Feed mengubah nilai.","The goal is to see":"Tujuannya adalah melihat","what changes next":"apa yang berubah berikutnya","when one part of the mine changes now.":"ketika satu bagian tambang berubah saat ini.","360 Mining Projects by Revaldi Suma Revikansyah":"360 Mining Projects oleh Revaldi Suma Revikansyah","Independent mine planning & operations portfolio":"Portofolio independen perencanaan & operasi tambang","Project":"Proyek","Click image to zoom / fit screen • Press Esc to close":"Klik gambar untuk memperbesar / menyesuaikan layar • Tekan Esc untuk menutup","Make operations":"Buat operasi","flow.":"mengalir.","I design systems that turn":"Saya merancang sistem yang mengubah","manual, fragmented workflows":"alur kerja manual dan terfragmentasi","into clear, connected decision loops — from analytics and automation to enterprise-facing prototypes.":"menjadi loop keputusan yang jelas dan terhubung — dari analitik dan otomasi hingga prototipe yang terhubung dengan kebutuhan sistem perusahaan.","Portfolio PDF ↗":"Portofolio PDF ↗","01 / Observe":"01 / Amati","Find the friction":"Temukan hambatannya","Trace the real workflow, constraints, delays and decision gaps.":"Telusuri alur kerja nyata, kendala, keterlambatan, dan celah pengambilan keputusan.","02 / Design":"02 / Rancang","Shape the system":"Bentuk sistemnya","Turn requirements into a usable data, process and interface model.":"Ubah kebutuhan menjadi model data, proses, dan antarmuka yang dapat digunakan.","03 / Build":"03 / Bangun","Prototype rapidly":"Prototipe dengan cepat","Make the concept tangible enough to test with real users and data.":"Jadikan konsep cukup nyata untuk diuji dengan pengguna dan data sebenarnya.","04 / Improve":"04 / Tingkatkan","Close the loop":"Tutup loop-nya","Measure the outcome and push the workflow toward better execution.":"Ukur hasilnya dan dorong alur kerja menuju eksekusi yang lebih baik.","Under the hood":"Di balik sistem","Every clean interface hides a messier system underneath.":"Setiap antarmuka yang bersih menyembunyikan sistem yang lebih rumit di baliknya.","Profile / Systems approach":"Profil / Pendekatan sistem","Build the bridge between operational reality and the system people actually need.":"Bangun jembatan antara realitas operasional dan sistem yang benar-benar dibutuhkan pengguna.","I am a data-driven":"Saya adalah seorang","Supply Chain Analyst":"Supply Chain Analyst berbasis data","specializing in process optimization, advanced analytics, and enterprise system integration. I have a proven ability to identify operational bottlenecks across procurement and operations,":"yang berfokus pada optimasi proses, analitik lanjutan, dan integrasi sistem enterprise. Saya mampu mengidentifikasi bottleneck operasional di area procurement dan operations,","bridging the gap between manual workflows and automated, high-performance supply chain strategies":"serta menjembatani alur kerja manual menuju strategi supply chain yang otomatis dan berkinerja tinggi","Connected":"Terhubung","Six problems. Six systems built to hold them.":"Enam masalah. Enam sistem yang dibangun untuk menanganinya.","Professional portfolio / 06 projects":"Portofolio profesional / 06 proyek","Selected systems.":"Sistem pilihan.","Brunel University Dataset":"Dataset Brunel University","Supply Chain Network Optimization":"Optimasi Jaringan Supply Chain","Addressed a logistics crisis by evaluating order batches against strict carrier constraints, VMI restrictions, and plant capacities. Translated a multi-day manual calculation task into a fast, systemic decision loop.":"Menangani masalah logistik dengan mengevaluasi batch pesanan terhadap batasan carrier, aturan VMI, dan kapasitas plant. Proses perhitungan manual yang sebelumnya memerlukan beberapa hari diubah menjadi loop keputusan sistematis yang cepat.","Captured $249,000+ in potential savings by rerouting 9,215 orders in under 1 hour.":"Mengidentifikasi potensi penghematan lebih dari $249.000 dengan melakukan rerouting terhadap 9.215 pesanan dalam waktu kurang dari 1 jam.","Streamlit Web Tool":"Tool Web Streamlit","Python Data Processing":"Pemrosesan Data Python","Logistics Design":"Desain Logistik","View Dashboard Pictures":"Lihat Gambar Dashboard","Vendor Delivery (VHS) Process Transformation":"Transformasi Proses Vendor Delivery (VHS)","Designed a full-stack, ERP-integrated prototype to eliminate \"blind receiving\" of incorrect materials. Built secure dual-user portals for vendors and receivers with Poka-Yoke compliance controls, a smart digital DO slip, and real-time geotracking.":"Merancang prototipe full-stack yang terintegrasi dengan ERP untuk menghilangkan \"blind receiving\" terhadap material yang tidak sesuai. Membangun portal dua pengguna yang aman untuk vendor dan penerima, dilengkapi kontrol kepatuhan Poka-Yoke, DO digital pintar, dan geotracking real-time.","Gathered requirements and deployed a functional simulation in a rapid 4-day sprint.":"Mengumpulkan kebutuhan dan membangun simulasi fungsional dalam sprint cepat selama 4 hari.","SAP HANA (Docker)":"SAP HANA (Docker)","SAP oData API":"SAP oData API","Rapid Prototyping":"Rapid Prototyping","View App Interfaces":"Lihat Antarmuka Aplikasi","Automated Market Intelligence Scraper":"Scraper Market Intelligence Otomatis","Replaced error-prone manual price checking for procurement. Engineered a web scraper that navigates complex e-commerce variants and deployed it via a private VPS to comply with strict corporate IT policies.":"Menggantikan pengecekan harga manual yang rawan kesalahan dalam proses procurement. Mengembangkan web scraper yang dapat menavigasi varian e-commerce yang kompleks dan men-deploy-nya melalui VPS privat untuk menyesuaikan kebijakan IT perusahaan.","Integrated Gemini AI (LLM) to \"read\" page results and map them to complex SAP material descriptions.":"Mengintegrasikan Gemini AI (LLM) untuk \"membaca\" hasil halaman dan memetakannya ke deskripsi material SAP yang kompleks.","Python (Selenium)":"Python (Selenium)","LLM / Gemini API":"LLM / Gemini API","VPS Deployment":"Deployment VPS","View Tool UI":"Lihat UI Tool","Logistics Performance & Route Optimization":"Kinerja Logistik & Optimasi Rute","Conducted a Time and Motion Study and analyzed Garmin telematics alongside 4 years of SAP transaction data to evaluate end-to-end delivery efficiency. Identified the true bottleneck wasn't route distance, but administrative staging.":"Melakukan Time and Motion Study serta menganalisis telematika Garmin bersama 4 tahun data transaksi SAP untuk mengevaluasi efisiensi pengiriman end-to-end. Bottleneck utama ditemukan bukan pada jarak rute, melainkan pada proses staging administratif.","Proposed digital manifest to eliminate an average 1-hour pickup delay per trip.":"Mengusulkan manifest digital untuk menghilangkan rata-rata keterlambatan pickup 1 jam per perjalanan.","Power BI":"Power BI","Root Cause Analysis":"Analisis Akar Masalah","Garmin Telematics":"Telematika Garmin","View Analysis":"Lihat Analisis","Vendor Communication Automation":"Otomasi Komunikasi Vendor","Eliminated repetitive manual data entry by developing an automated communication tool. Designed a smart UI allowing non-technical procurement staff to easily filter data and customize mass email communications.":"Menghilangkan entri data manual berulang dengan mengembangkan tool komunikasi otomatis. Merancang UI yang memudahkan staf procurement non-teknis untuk memfilter data dan menyesuaikan komunikasi email massal.","Automated generation of formatted vendor emails with embedded HTML tables and duplicate prevention.":"Mengotomatisasi pembuatan email vendor terformat dengan tabel HTML tertanam serta pencegahan duplikasi.","Advanced Excel / VBA":"Excel Lanjutan / VBA","Process Automation":"Otomasi Proses","UI/UX Design":"Desain UI/UX","View Excel Control Panel":"Lihat Control Panel Excel","Material Master UX/UI Modernization":"Modernisasi UX/UI Material Master","Supported the transition of a legacy database interface to a modernized, user-friendly platform. Proved viability by simulating the environment with massive data loads and asynchronous image fetching.":"Mendukung transisi antarmuka database legacy menuju platform modern yang lebih ramah pengguna. Kelayakan dibuktikan melalui simulasi dengan volume data besar dan asynchronous image fetching.","Architected a functional frontend prototype demonstrating stability with 80,000 dummy records.":"Merancang prototipe frontend fungsional yang menunjukkan stabilitas dengan 80.000 dummy record.","HTML/CSS":"HTML/CSS","Frontend Architecture":"Arsitektur Frontend","UX Research":"Riset UX","View Prototype UI":"Lihat UI Prototipe","Closing the loop":"Menutup loop","The best system is the one nobody notices anymore.":"Sistem terbaik adalah sistem yang pada akhirnya tidak perlu lagi disadari penggunanya.","Project gallery":"Galeri proyek","Click image to zoom • Arrow keys to navigate • Esc to close":"Klik gambar untuk memperbesar • Gunakan tombol panah untuk navigasi • Esc untuk menutup","LinkedIn":"LinkedIn","Project Portofolio (PDF)":"Portofolio Proyek (PDF)","Abstract system workflow illustration":"Ilustrasi abstrak alur kerja sistem","Animated system network visual":"Visual jaringan sistem animasi","Close gallery":"Tutup galeri","Expanded project image":"Gambar proyek yang diperbesar","Field footage of an active mining and quarry site":"Rekaman lapangan area tambang dan quarry yang aktif","Field footage of excavation and dust on an open-pit site":"Rekaman lapangan aktivitas penggalian dan debu di area open pit","Field footage of trucks and machinery moving material":"Rekaman lapangan truk dan alat berat yang memindahkan material","Gallery position":"Posisi galeri","Integrated mining operations infographic showing surface mining, underground development, processing plant, and planning-scheduling-operations-analytics modules.":"Infografik operasi tambang terintegrasi yang menampilkan tambang permukaan, development bawah tanah, processing plant, serta modul perencanaan-penjadwalan-operasi-analitik.","Next image":"Gambar berikutnya","Previous image":"Gambar sebelumnya","Project gallery image":"Gambar galeri proyek","Switch to 360 Mining Projects":"Beralih ke 360 Mining Projects","Switch to System Analyst Projects":"Beralih ke System Analyst Projects","System Analyst project image gallery":"Galeri gambar proyek System Analyst","Built to understand how underground development and production actually become executable work. The system links development headings, ground support, charging and blasting, mucking, stope readiness, backfill, ventilation, material handling and equipment availability into a connected operational model.":"Dibangun untuk memahami bagaimana development dan produksi bawah tanah benar-benar berubah menjadi pekerjaan yang dapat dieksekusi. Sistem ini menghubungkan development heading, ground support, charging dan blasting, mucking, kesiapan stope, backfill, ventilasi, material handling, serta ketersediaan peralatan ke dalam satu model operasional yang terhubung.","Development Sequencing. A full schedule plan for development task. Development is a task to create a tunnel access.":"Development Sequencing. Rencana jadwal lengkap untuk pekerjaan development. Development adalah pekerjaan untuk membangun akses terowongan.","Stope Planning. A schedule plan for stope production, in current picture, it serve as MTP plan.":"Stope Planning. Rencana jadwal produksi stope; pada tampilan ini digunakan sebagai rencana MTP.","Live Loop. A feature to simulate how the actual productivity including unexpected disruptions.":"Live Loop. Fitur untuk mensimulasikan produktivitas aktual termasuk gangguan yang tidak terduga.","Equipment Capability. Table that serve informations of actual equipment capability with current performance. This information will usefull for future forecast schedule.":"Equipment Capability. Tabel yang menampilkan kemampuan aktual peralatan berdasarkan performa saat ini. Informasi ini digunakan untuk mendukung forecast jadwal berikutnya.","Ventilation Heatmap. An information that shows how much active unit in the area, this informations is usefull to ensure air quality at a spesific production area is good.":"Ventilation Heatmap. Informasi yang menunjukkan jumlah unit aktif di suatu area, berguna untuk membantu memastikan kualitas udara pada area produksi tertentu tetap memadai.","Mainly start with general training which a more simplified learning scope around creating task, predecessor and assigning resources. And move further into more detailed MTP training, unlocking more learning points to utilizing some native features (Filters, production field, rate tables), reporting, create calendar/":"Dimulai dari general training dengan ruang lingkup yang lebih sederhana: membuat task, predecessor, dan menetapkan resource. Kemudian berkembang ke training MTP yang lebih detail, termasuk penggunaan fitur native seperti Filters, production field, rate tables, reporting, dan pembuatan calendar.","Task Grid. A tasks list for schedule.":"Task Grid. Daftar task untuk jadwal.","Rate Table. Fields for effective rate setup to each resources. This rate table will automatically connected to driving quantity and affects the task duration.":"Rate Table. Field untuk mengatur effective rate tiap resource. Rate table terhubung otomatis dengan driving quantity dan memengaruhi durasi task.","Scheduling Calendar. A custom schedule calendar setup that can be assigned to a spesific task.":"Scheduling Calendar. Pengaturan kalender jadwal khusus yang dapat ditetapkan ke task tertentu.","Resources. A place to setup production resource, including the resource availability and calendar assignment.":"Resources. Area untuk mengatur resource produksi, termasuk ketersediaan resource dan penetapan calendar.","Resource Report. Showing a gantt chart of resource, informing which task use the resource.":"Resource Report. Menampilkan Gantt chart resource untuk menunjukkan task mana yang menggunakan resource tersebut.","Built to explore how block value becomes a mine plan once mining capacity, processing capacity, routing and stockpiles are introduced. The project compares manual and optimized planning decisions across periods and connects planning outputs to downstream operating systems.":"Dibangun untuk mengeksplorasi bagaimana nilai blok berubah menjadi mine plan ketika kapasitas penambangan, kapasitas pengolahan, routing, dan stockpile diperhitungkan. Proyek ini membandingkan keputusan perencanaan manual dan teroptimasi antarperiode serta menghubungkan output perencanaan ke sistem operasi downstream.","Schedule and Routing. It create a schedule based on planned period, equipment capability (Trucks) and Plan Capacity (Stockpile, Smelter/Autoclave). Also create a route network for MineOps 360 simulations.":"Schedule and Routing. Membuat jadwal berdasarkan periode rencana, kemampuan peralatan (truk), dan kapasitas rencana (Stockpile, Smelter/Autoclave). Juga membangun jaringan rute untuk simulasi MineOps 360.","3D Mine Block. A block visual that shows a block content (Nickel, Iron, etc).":"3D Mine Block. Visual blok yang menunjukkan kandungan blok seperti Nickel, Iron, dan lainnya.","Block Value. A feature to calculate a valuation of total blocks that are considered for Open-Pit production.":"Block Value. Fitur untuk menghitung valuasi total blok yang dipertimbangkan untuk produksi Open Pit.","Life-of-mine. Showcasing a valuation of overall period productivity, to ensure the current project/plan is valuable/profitable enough to start. \"This is not reflecting of how actual life-of-mine calculation\"":"Life-of-mine. Menampilkan valuasi produktivitas keseluruhan periode untuk menilai apakah proyek/rencana cukup bernilai atau menguntungkan untuk dijalankan. \"Ini tidak merepresentasikan perhitungan life-of-mine aktual.\"","Nickel-laterite classification. Just a feature to highlight a block that classified as limonite (HPAL) or saprolite (RKEF) based on parameters setup.":"Nickel-laterite classification. Fitur untuk menyorot blok yang diklasifikasikan sebagai limonite (HPAL) atau saprolite (RKEF) berdasarkan parameter yang ditetapkan.","A live operational simulation for understanding the consequences of truck assignments, shovel availability, road conditions and disruptions. It focuses on operational response, constraint identification and the gap between planned and achieved movement.":"Simulasi operasi live untuk memahami konsekuensi penugasan truk, ketersediaan shovel, kondisi jalan, dan gangguan. Fokusnya adalah respons operasional, identifikasi kendala, serta gap antara pergerakan yang direncanakan dan yang tercapai.","Live Loop. A simulation feature to assess ore movement actual production including the unexpected disruptions.":"Live Loop. Fitur simulasi untuk menilai produksi aktual pergerakan bijih termasuk gangguan yang tidak terduga.","Strategy Comparison. A feature that are mainly create just to compare to some fixed strategy and manual live loop.":"Strategy Comparison. Fitur untuk membandingkan beberapa strategi tetap dengan keputusan manual pada live loop.","Bottleneck Analysis. A feature to inform road/equipment/target bottleneck. This information are usefull for dispatch and investment strategy.":"Bottleneck Analysis. Fitur untuk mengidentifikasi bottleneck pada jalan, peralatan, atau target. Informasi ini berguna untuk strategi dispatch dan keputusan investasi.","A supporting project for understanding how mining and stockpile decisions affect downstream feed. It explores ore combinations, chemistry constraints, route selection and operating consequences across HPAL/RKEF-style processing pathways.":"Proyek pendukung untuk memahami bagaimana keputusan penambangan dan stockpile memengaruhi downstream feed. Proyek ini mengeksplorasi kombinasi bijih, kendala kimia, pemilihan jalur, serta konsekuensi operasi pada jalur pengolahan bergaya HPAL/RKEF.","Live Loop. RKEF simulation to visualize and showing how the chemistry structure and mitigation action affects the overall slag structure and temperature.":"Live Loop. Simulasi RKEF untuk memvisualisasikan bagaimana struktur kimia dan tindakan mitigasi memengaruhi struktur slag serta temperatur keseluruhan.","Manual Ore Blend. A feature to simulate of blending the ore.":"Manual Ore Blend. Fitur untuk mensimulasikan proses blending bijih.","Ore Blend Results. A detailed blending results of previous manual ore blend, the information here is usefull to ensure productivity cost and value are appropriate.":"Ore Blend Results. Hasil detail dari manual ore blend sebelumnya; informasi ini digunakan untuk menilai kesesuaian produktivitas, biaya, dan nilai.","HPAL/limonite ore Blend Results. A detailed HPAL results.":"HPAL/limonite Ore Blend Results. Hasil detail proses HPAL.","HPAL simulation. A live loop simulation for HPAL/Autoclave.":"HPAL simulation. Simulasi live loop untuk HPAL/Autoclave.","Expanded image":"Gambar diperbesar","Open project ↗":"Buka proyek ↗","English":"English","Bahasa Indonesia":"Bahasa Indonesia"};
+  const supported = new Set(['en','id']);
+  const nodeSource = new WeakMap();
+  const attrSource = new WeakMap();
+  const switcher = document.getElementById('languageSwitcher');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let current = 'en';
+  let applying = false;
+
+  function normalize(value){
+    return String(value ?? '').replace(/\s+/g,' ').trim();
+  }
+
+  function translateDynamic(source){
+    const s = normalize(source);
+    if(current !== 'id') return s;
+    if(Object.prototype.hasOwnProperty.call(ID,s)) return ID[s];
+
+    let m;
+    if((m=s.match(/^(\d+) images$/))) return `${m[1]} gambar`;
+    if((m=s.match(/^Show image (\d+)$/))) return `Tampilkan gambar ${m[1]}`;
+    if((m=s.match(/^Project gallery image (\d+) of (\d+)$/))) return `Gambar galeri proyek ${m[1]} dari ${m[2]}`;
+    if((m=s.match(/^(.+) image (\d+)$/))) return `${m[1]} gambar ${m[2]}`;
+    if((m=s.match(/^Open (.+)$/))) return `Buka ${m[1]}`;
+    if((m=s.match(/^Switch to (.+)$/))) return `Beralih ke ${m[1]}`;
+    return s;
+  }
+
+  function translateTextNode(node){
+    if(!node || node.nodeType !== Node.TEXT_NODE) return;
+    const parent = node.parentElement;
+    if(!parent || /^(SCRIPT|STYLE|NOSCRIPT|TEXTAREA)$/.test(parent.tagName)) return;
+
+    if(!nodeSource.has(node)) nodeSource.set(node,node.nodeValue);
+    const source = nodeSource.get(node);
+    const norm = normalize(source);
+    if(!norm) return;
+
+    const leading = source.match(/^\s*/)?.[0] || '';
+    const trailing = source.match(/\s*$/)?.[0] || '';
+    const translated = current === 'id' ? translateDynamic(norm) : norm;
+    const next = leading + translated + trailing;
+    if(node.nodeValue !== next) node.nodeValue = next;
+  }
+
+  function translateAttributes(el, fromMutation=false){
+    if(!el || el.nodeType !== Node.ELEMENT_NODE) return;
+    const names = ['aria-label','title','alt','placeholder'];
+    let originals = attrSource.get(el);
+    if(!originals){ originals={}; attrSource.set(el,originals); }
+    names.forEach(name=>{
+      if(!el.hasAttribute(name)) return;
+      const currentValue=el.getAttribute(name);
+      if(!(name in originals)){
+        originals[name]=currentValue;
+      } else if(fromMutation){
+        const expected=current==='id' ? translateDynamic(originals[name]) : originals[name];
+        if(currentValue!==expected) originals[name]=currentValue;
+      }
+      const source=originals[name];
+      const next=current==='id' ? translateDynamic(source) : source;
+      if(el.getAttribute(name)!==next) el.setAttribute(name,next);
+    });
+  }
+
+  function process(root){
+    if(!root) return;
+    if(root.nodeType===Node.TEXT_NODE){ translateTextNode(root); return; }
+    if(root.nodeType!==Node.ELEMENT_NODE && root.nodeType!==Node.DOCUMENT_NODE && root.nodeType!==Node.DOCUMENT_FRAGMENT_NODE) return;
+    if(root.nodeType===Node.ELEMENT_NODE) translateAttributes(root);
+    const walker=document.createTreeWalker(root,NodeFilter.SHOW_ELEMENT|NodeFilter.SHOW_TEXT);
+    let n;
+    while((n=walker.nextNode())){
+      if(n.nodeType===Node.TEXT_NODE) translateTextNode(n);
+      else translateAttributes(n);
+    }
+  }
+
+  function updateMeta(){
+    const meta=document.querySelector('meta[name="description"]');
+    if(meta){
+      if(!meta.dataset.enDescription) meta.dataset.enDescription=meta.getAttribute('content')||'';
+      meta.setAttribute('content', current==='id'
+        ? 'Portofolio Revaldi Revikansyah — 360 Mining Projects dan System Analyst Projects.'
+        : meta.dataset.enDescription);
+    }
+  }
+
+  function updateSwitcher(){
+    if(!switcher) return;
+    switcher.querySelectorAll('[data-language]').forEach(btn=>{
+      const active=btn.dataset.language===current;
+      btn.classList.toggle('is-active',active);
+      btn.setAttribute('aria-pressed',active?'true':'false');
+    });
+  }
+
+  function applyLanguage(lang, persist=true){
+    if(!supported.has(lang)) lang='en';
+    current=lang;
+    applying=true;
+    document.documentElement.lang=lang;
+    document.documentElement.dataset.language=lang;
+    process(document.head);
+    process(document.body);
+    updateMeta();
+    updateSwitcher();
+    applying=false;
+    if(persist){
+      try{ localStorage.setItem('portfolio-language',lang); }catch(e){}
+    }
+    document.dispatchEvent(new CustomEvent('portfolio:languagechange',{detail:{language:lang}}));
+  }
+
+  function choose(lang){
+    if(lang===current) return;
+    if(reducedMotion){ applyLanguage(lang,true); return; }
+    document.documentElement.classList.add('is-language-switching');
+    setTimeout(()=>{
+      applyLanguage(lang,true);
+      requestAnimationFrame(()=>requestAnimationFrame(()=>
+        document.documentElement.classList.remove('is-language-switching')
+      ));
+    },85);
+  }
+
+  switcher?.addEventListener('click',event=>{
+    const btn=event.target.closest('[data-language]');
+    if(btn) choose(btn.dataset.language);
+  });
+
+  const observer=new MutationObserver(records=>{
+    if(applying) return;
+    records.forEach(record=>{
+      if(record.type==='attributes') translateAttributes(record.target,true);
+      else record.addedNodes.forEach(process);
+    });
+  });
+  observer.observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['aria-label','title','alt','placeholder']});
+
+  let saved='en';
+  try{ saved=localStorage.getItem('portfolio-language')||'en'; }catch(e){}
+  applyLanguage(supported.has(saved)?saved:'en',false);
+
+  window.PortfolioLanguage={
+    get language(){return current;},
+    set:choose,
+    translate:translateDynamic,
+    refresh:()=>applyLanguage(current,false)
+  };
+})();
+</script>
+
 </body>
 </html>
