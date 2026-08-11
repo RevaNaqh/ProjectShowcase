@@ -879,7 +879,7 @@ function openDetail(id){
   const p=projects.find(x=>x.id===id);if(!p)return;
   const imgs=projectImages(p);
   const gallery=imgs.length?'<h3 class="gallery-heading">Project gallery</h3><div class="project-gallery">'+
-    imgs.map((img,i)=>'<figure class="gallery-card '+(i%3===0?'wide':'')+'"><img class="clickable-zoom" src="'+esc(img.url)+'" alt="'+esc(p.title)+' image '+(i+1)+'" onclick="openImageLightbox(''+esc(img.url)+'',''+esc(p.title)+' image '+(i+1)+'')"><figcaption class="gallery-caption">'+esc(img.description||"")+'</figcaption></figure>').join("")+
+    imgs.map((img,i)=>'<figure class="gallery-card '+(i%3===0?'wide':'')+'"><img class="clickable-zoom" src="'+esc(img.url)+'" alt="'+esc(p.title)+' image '+(i+1)+'" data-lightbox-src="'+esc(img.url)+'" data-lightbox-alt="'+esc(p.title)+' image '+(i+1)+'"><figcaption class="gallery-caption">'+esc(img.description||"")+'</figcaption></figure>').join("")+
     '</div>':'';
   document.getElementById("detailContent").innerHTML=
     '<div class="detail-category">'+esc(p.category)+'</div><h2>'+esc(p.title)+'</h2>'+
@@ -898,7 +898,11 @@ function openImageLightbox(src,alt="Expanded image"){
   img.alt=alt;
   stage.classList.remove("zoomed");
   lightboxZoomed=false;
-  if(typeof dialog.showModal==="function"){ dialog.showModal(); }
+  if(typeof dialog.showModal==="function"){
+    if(!dialog.open) dialog.showModal();
+  }else{
+    dialog.setAttribute("open","");
+  }
 }
 function closeImageLightbox(){
   const dialog=document.getElementById("imageLightbox");
@@ -915,15 +919,22 @@ function toggleImageZoom(){
   stage.classList.toggle("zoomed", lightboxZoomed);
 }
 document.addEventListener("click",(e)=>{
+  const galleryImage=e.target.closest?.(".clickable-zoom[data-lightbox-src]");
+  if(galleryImage){
+    openImageLightbox(
+      galleryImage.dataset.lightboxSrc,
+      galleryImage.dataset.lightboxAlt || galleryImage.alt || "Expanded image"
+    );
+    return;
+  }
+
   const dialog=document.getElementById("imageLightbox");
   if(!dialog) return;
   const img=document.getElementById("lightboxImage");
   const shell=document.getElementById("lightboxShell");
   if(e.target===img){
     toggleImageZoom();
-  }else if(dialog.open && e.target===dialog){
-    closeImageLightbox();
-  }else if(dialog.open && e.target===shell){
+  }else if(dialog.open && (e.target===dialog || e.target===shell)){
     closeImageLightbox();
   }
 });
