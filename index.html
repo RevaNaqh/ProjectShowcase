@@ -1092,6 +1092,85 @@ button,input,textarea{font:inherit}
 
 @media(prefers-reduced-motion:reduce){.portfolio-page::before,.portfolio-page::after{animation:none!important}}
 
+
+/* =========================================================
+   Scroll-linked background scenes (video / canvas dividers)
+   ========================================================= */
+.scroll-scene{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  height:58vh;
+  min-height:340px;
+  max-height:640px;
+  margin:0;
+  display:flex;
+  align-items:flex-end;
+  background:#0b0c0a;
+}
+.scroll-scene-media{
+  position:absolute;
+  inset:-10% -6%;
+  width:112%;
+  height:120%;
+  object-fit:cover;
+  display:block;
+  will-change:transform;
+  transform:translate3d(0,0,0) scale(1.1);
+}
+.scroll-scene-scrim{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+}
+.scroll-scene-caption{
+  position:relative;
+  z-index:2;
+  margin:0 0 clamp(30px,5.5vw,58px);
+  padding:0 clamp(20px,6vw,64px);
+  max-width:660px;
+  font-size:clamp(19px,2.35vw,27px);
+  line-height:1.32;
+  letter-spacing:-.022em;
+  font-weight:620;
+}
+.scroll-scene-tag{
+  position:absolute;
+  z-index:2;
+  top:clamp(20px,4vw,34px);
+  left:clamp(20px,6vw,64px);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+
+.mining-page .scroll-scene-scrim{
+  background:
+    linear-gradient(180deg,rgba(12,11,8,.12) 0%,rgba(12,11,8,.04) 26%,rgba(12,11,8,.58) 76%,rgba(10,9,7,.86) 100%),
+    linear-gradient(100deg,rgba(10,9,7,.4) 0%,transparent 42%);
+}
+.mining-page .scroll-scene-caption{color:#f7f2e9}
+.mining-page .scroll-scene-tag{color:#e9ad6c}
+
+.analyst-page .scroll-scene{background:#08080b}
+.analyst-page .scroll-scene-media{background:radial-gradient(circle at 28% 38%,rgba(120,103,255,.16),transparent 60%),#08080b}
+.analyst-page .scroll-scene-scrim{
+  background:
+    linear-gradient(180deg,rgba(5,5,7,.1) 0%,rgba(5,5,7,.02) 28%,rgba(5,5,7,.62) 78%,rgba(4,4,6,.92) 100%),
+    radial-gradient(circle at 72% 30%,rgba(110,231,255,.10),transparent 55%);
+}
+.analyst-page .scroll-scene-caption{color:#ededf3}
+.analyst-page .scroll-scene-tag{color:#a093ff}
+
+@media(max-width:620px){
+  .scroll-scene{height:46vh;min-height:260px}
+  .scroll-scene-caption{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .scroll-scene-media{transform:none!important;transition:none!important}
+}
 </style>
 </head>
 <body>
@@ -1144,6 +1223,14 @@ button,input,textarea{font:inherit}
 <div class="frame-caption">Integrated mine system graphic • open pit + underground + plant + planning workflow</div>
 </div>
 </div>
+</section>
+<section class="scroll-scene reveal" aria-label="Field footage of an active mining and quarry site">
+<span class="scroll-scene-tag">On site</span>
+<video class="scroll-scene-media" muted loop playsinline preload="none" poster="https://images.pexels.com/videos/8382429/drone-extraction-mining-8382429.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=627&amp;fit=crop&amp;w=1200" aria-hidden="true">
+<source src="https://videos.pexels.com/video-files/8382429/8382429-uhd_2560_1440_30fps.mp4" type="video/mp4">
+</video>
+<div class="scroll-scene-scrim"></div>
+<p class="scroll-scene-caption">Every schedule eventually meets a real pit, moving in real time.</p>
 </section>
 <section class="chapter white" id="projects">
 <div class="shell">
@@ -1234,6 +1321,14 @@ button,input,textarea{font:inherit}
 </div>
 </div>
 </section>
+<section class="scroll-scene reveal" aria-label="Field footage of trucks and machinery moving material">
+<span class="scroll-scene-tag">In motion</span>
+<video class="scroll-scene-media" muted loop playsinline preload="none" poster="https://images.pexels.com/videos/17627281/building-site-construction-industry-construction-machinery-construction-site-17627281.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=627&amp;fit=crop&amp;w=1200" aria-hidden="true">
+<source src="https://videos.pexels.com/video-files/17627281/17627281-uhd_2560_1440_24fps.mp4" type="video/mp4">
+</video>
+<div class="scroll-scene-scrim"></div>
+<p class="scroll-scene-caption">The plan only means something once it hits the ground.</p>
+</section>
 <section class="chapter" id="approach">
 <div class="shell">
 <div class="chapter-head center reveal in">
@@ -1251,6 +1346,14 @@ button,input,textarea{font:inherit}
 <div class="focus reveal in"><strong>Improve</strong><p>Test alternative decisions with optimization, automation and AI-assisted reasoning.</p><span class="num">04</span></div>
 </div>
 </div>
+</section>
+<section class="scroll-scene reveal" aria-label="Field footage of excavation and dust on an open-pit site">
+<span class="scroll-scene-tag">Ground truth</span>
+<video class="scroll-scene-media" muted loop playsinline preload="none" poster="https://images.pexels.com/videos/7779603/aerial-dig-drone-extract-7779603.jpeg?w=1260&amp;h=750&amp;dpr=1" aria-hidden="true">
+<source src="https://videos.pexels.com/video-files/7779603/7779603-uhd_2560_1440_30fps.mp4" type="video/mp4">
+</video>
+<div class="scroll-scene-scrim"></div>
+<p class="scroll-scene-caption">Cycles, delays, dust — the variables a good system has to hold.</p>
 </section>
 <section class="chapter dark">
 <div class="shell">
@@ -1311,9 +1414,21 @@ button,input,textarea{font:inherit}
 <div class="system-node n4"><small>04 / Improve</small><strong>Close the loop</strong><span>Measure the outcome and push the workflow toward better execution.</span></div>
 </div>
 </header>
+<section class="scroll-scene scroll-scene--canvas reveal" aria-label="Animated system network visual">
+<span class="scroll-scene-tag">Under the hood</span>
+<canvas class="scroll-scene-media" aria-hidden="true"></canvas>
+<div class="scroll-scene-scrim"></div>
+<p class="scroll-scene-caption">Every clean interface hides a messier system underneath.</p>
+</section>
 <div class="container"><section class="intro-section reveal" id="sa-profile"><div class="section-kicker">Profile / Systems approach</div><h2 class="intro-title">Build the bridge between operational reality and the system people actually need.</h2><div class="summary-card">
 <p>I am a data-driven <strong>Supply Chain Analyst</strong> specializing in process optimization, advanced analytics, and enterprise system integration. I have a proven ability to identify operational bottlenecks across procurement and operations, <strong>bridging the gap between manual workflows and automated, high-performance supply chain strategies</strong>.</p>
 </div></section>
+<section class="scroll-scene scroll-scene--canvas reveal" aria-label="Animated system network visual">
+<span class="scroll-scene-tag">Connected</span>
+<canvas class="scroll-scene-media" aria-hidden="true"></canvas>
+<div class="scroll-scene-scrim"></div>
+<p class="scroll-scene-caption">Six problems. Six systems built to hold them.</p>
+</section>
 <section class="projects-section" id="sa-projects"><div class="section-kicker reveal">Professional portfolio / 06 projects</div><h2 class="section-title reveal" id="sa-projects-title">Selected systems.</h2><div class="grid">
 <!-- Project 1: Network Optimization -->
 <div class="card reveal">
@@ -1452,6 +1567,12 @@ button,input,textarea{font:inherit}
                 ])">View Prototype UI</button>
 </div>
 </div></section></div>
+<section class="scroll-scene scroll-scene--canvas reveal" aria-label="Animated system network visual">
+<span class="scroll-scene-tag">Closing the loop</span>
+<canvas class="scroll-scene-media" aria-hidden="true"></canvas>
+<div class="scroll-scene-scrim"></div>
+<p class="scroll-scene-caption">The best system is the one nobody notices anymore.</p>
+</section>
 <!-- System Analyst project gallery -->
 <div class="modal" id="sa-imageModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="System Analyst project image gallery">
   <div class="sa-modal-shell" id="saModalShell">
@@ -1837,6 +1958,134 @@ initReveal();
   showPage(initial, false);
 })();
 
+</script>
+<script>
+(function(){
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scenes = Array.from(document.querySelectorAll('.scroll-scene'));
+  if(!scenes.length) return;
+
+  /* Gentle scroll-linked parallax on the media layer of each scene */
+  function setParallax(){
+    const vh = window.innerHeight || 1;
+    scenes.forEach(scene=>{
+      const media = scene.querySelector('.scroll-scene-media');
+      if(!media) return;
+      const rect = scene.getBoundingClientRect();
+      const center = rect.top + rect.height/2 - vh/2;
+      const range = (vh + rect.height)/2 || 1;
+      const p = Math.max(-1, Math.min(1, center/range));
+      media.style.transform = `translate3d(0,${(p*-7).toFixed(2)}%,0) scale(1.12)`;
+    });
+  }
+  if(!reducedMotion){
+    let ticking = false;
+    const onScroll = () => {
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(()=>{ setParallax(); ticking = false; });
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    setParallax();
+  }
+
+  /* Play the video / animate the canvas only while its scene is on screen */
+  function toggleScene(scene, active){
+    const video = scene.querySelector('video.scroll-scene-media');
+    const canvas = scene.querySelector('canvas.scroll-scene-media');
+    if(video){
+      if(active && !reducedMotion){
+        if(video.dataset.primed !== '1'){ video.load(); video.dataset.primed = '1'; }
+        video.play().catch(()=>{});
+      } else {
+        video.pause();
+      }
+    }
+    if(canvas){
+      canvas.dispatchEvent(new CustomEvent(active ? 'scene:play' : 'scene:pause'));
+    }
+  }
+
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(entry => toggleScene(entry.target, entry.isIntersecting));
+    }, {threshold:0.12, rootMargin:'100px 0px'});
+    scenes.forEach(s=>io.observe(s));
+  } else {
+    scenes.forEach(s=> toggleScene(s, true));
+  }
+
+  /* Lightweight animated node network for the System Analyst dividers */
+  document.querySelectorAll('canvas.scroll-scene-media').forEach(canvas=>{
+    const ctx = canvas.getContext('2d');
+    let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let nodes = [], rafId = null, playing = false, seeded = false;
+    const COUNT = 24;
+
+    function resize(){
+      const rect = canvas.getBoundingClientRect();
+      w = rect.width; h = rect.height;
+      canvas.width = Math.max(1, Math.round(w * dpr));
+      canvas.height = Math.max(1, Math.round(h * dpr));
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    function seed(){
+      nodes = Array.from({length:COUNT}, () => ({
+        x: Math.random()*w, y: Math.random()*h,
+        vx: (Math.random()-.5)*.22, vy: (Math.random()-.5)*.22,
+        r: Math.random()*1.6+1.1
+      }));
+      seeded = true;
+    }
+    function frame(){
+      ctx.clearRect(0,0,w,h);
+      nodes.forEach(n=>{
+        n.x += n.vx; n.y += n.vy;
+        if(n.x < 0 || n.x > w) n.vx *= -1;
+        if(n.y < 0 || n.y > h) n.vy *= -1;
+      });
+      const maxDist = Math.min(w,h) * .3;
+      for(let i=0;i<nodes.length;i++){
+        for(let j=i+1;j<nodes.length;j++){
+          const a = nodes[i], b = nodes[j];
+          const dx = a.x-b.x, dy = a.y-b.y;
+          const dist = Math.sqrt(dx*dx+dy*dy);
+          if(dist < maxDist){
+            ctx.strokeStyle = `rgba(158,148,255,${(1-dist/maxDist)*.32})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+            ctx.stroke();
+          }
+        }
+      }
+      nodes.forEach(n=>{
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(210,206,255,.9)';
+        ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+        ctx.fill();
+      });
+      if(playing) rafId = requestAnimationFrame(frame);
+    }
+    function start(){
+      resize();
+      if(!seeded) seed();
+      if(reducedMotion){ frame(); return; }
+      if(playing) return;
+      playing = true;
+      rafId = requestAnimationFrame(frame);
+    }
+    function stop(){
+      playing = false;
+      if(rafId) cancelAnimationFrame(rafId);
+    }
+    canvas.addEventListener('scene:play', start);
+    canvas.addEventListener('scene:pause', stop);
+    window.addEventListener('resize', ()=>{ if(playing){ resize(); } });
+    if(!('IntersectionObserver' in window)) start();
+  });
+})();
 </script>
 </body>
 </html>
